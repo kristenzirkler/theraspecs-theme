@@ -1,0 +1,10 @@
+highlighter: rouge
+github: [Repository metadata]
+
+baseurl: "http://kristenzirkler.github.io/theraspecs-theme"
+
+# Sass
+sass:
+  sass_dir: scss
+  style: :expanded
+  line_numbers: true

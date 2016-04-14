@@ -1,0 +1,17 @@
+.button {
+  padding: 1em 1.5em;
+  color: #fff;
+  display: inline-block;
+  background: $main-color;
+  font-family: $accent-font;
+  text-transform: uppercase;
+
+  display: block;
+  text-align: center;
+
+  @include transition(all .3s);
+  &:hover {
+    color: #fff;
+    background: darken($main-color,10);
+  }
+}

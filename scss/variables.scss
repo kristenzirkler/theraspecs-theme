@@ -1,0 +1,54 @@
+$body-background: #fff;
+
+$page-background: $body-background;
+
+$main-color: #7dc52f;
+
+$white: #fff;
+$gray-lightest: #f5f4f2;
+$gray-light: #d4d4d2;
+$gray: #8d9095;
+$black: #000;
+
+$font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+$accent-font: Arial, 'Lucida Grande', sans-serif;
+
+$font-color: $black;
+$link: $main-color;
+
+$error: #d92424;
+
+$page-size: 960px;
+
+$desktop-side-space: 20px;
+$mobile-side-space: 30px;
+
+@mixin transition($transitions) {
+    -webkit-transition: $transitions;
+    -moz-transition: $transitions;
+    -o-transition: $transitions;
+    transition: $transitions;
+}
+@mixin transition-delay($transitions) {
+    -webkit-transition-delay: $transitions;
+    -moz-transition-delay: $transitions;
+    -o-transition-delay: $transitions;
+    transition-delay: $transitions;
+}
+@mixin transform($variables) {
+  -webkit-transform: $variables;
+  -moz-transform:    $variables;
+  -ms-transform:     $variables;
+  -o-transform:      $variables;
+  transform:         $variables;
+}
+@mixin gradient($start,$start-opacity,$stop,$stop-opacity) {
+	background: $start;
+	background: -moz-linear-gradient(top,  rgba($start,$start-opacity) 0%, rgba($stop,$stop-opacity) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba($start,$start-opacity)), color-stop(100%,rgba($stop,$stop-opacity))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba($start,$start-opacity) 0%,rgba($stop,$stop-opacity) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba($start,$start-opacity) 0%,rgba($stop,$stop-opacity) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba($start,$start-opacity) 0%,rgba($stop,$stop-opacity) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba($start,$start-opacity) 0%,rgba($stop,$stop-opacity) 100%); /* W3C */
+	//filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+}

@@ -1,0 +1,131 @@
+---
+---
+
+@import 'variables';
+
+@import 'reset';
+@import 'icons';
+@import 'site-frame';
+@import 'buttons';
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body {
+  background: $body-background;
+  color: $font-color;
+
+}
+body, button, label {
+  font-family: $font-family;
+}
+a {
+  color: $link;
+  text-decoration: none;
+  outline: none;
+  &:hover {
+    color: darken($link, 10);
+  }
+}
+p {
+  line-height: 1.5em;
+  margin-bottom: 1em;
+}
+
+.button {
+  padding: 1em 1.5em;
+  color: #fff;
+  display: inline-block;
+  background: $main-color;
+  font-family: $accent-font;
+  text-transform: uppercase;
+  &:hover {
+    color: #fff;
+    background: lighten($main-color,10);
+  }
+}
+
+// Headers
+h1, h2, h3, h4 {
+  font-family: $accent-font;
+}
+h1 {
+  font-size: 32px;
+  line-height: 1.2em;
+}
+h2 {
+  font-size: 20px;
+  line-height: 1.4em;
+}
+h3 {
+  font-size: 24px;
+  line-height: 1.4em;
+}
+h4 {
+  font-size: 18px;
+  margin-bottom: 1em;
+  color: $main-color;
+}
+
+
+/* KZ Love Footer */
+$kz-font-color: #999;
+$kz-font-hover-color: #e13c3b; // red
+$kz-bg-color: #e5e5e5;
+
+.site-design {
+  background: $kz-bg-color;
+  color: $kz-font-color;
+  padding: 10px;
+  a {
+    display: block;
+    color: $kz-font-color;
+    &:hover {
+      color: $kz-font-hover-color;
+      .kz-icon-arizona {
+        color: $kz-font-hover-color;
+      }
+    }
+  }
+  .made-in-az {
+    position: relative;
+    font-size: 14px;
+    padding-left: 35px;
+  }
+  span {
+    display: block;
+    line-height: 25px;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  i {
+    position: absolute;
+  }
+  .kz-icon-arizona {
+    top: 0;
+    left: 0;
+    font-size: 25px;
+  }
+  .kz-icon-heart-empty {
+    color: $kz-bg-color;
+    font-size: 11px;
+    top: 6px;
+    left: 11px;
+  }
+}
+
+// Responsive
+@media all and (min-width: 420px) {
+// Tablet & Up
+
+
+// End Tablet & Up
+}
+
+@media all and (min-width: 800px) {
+// Desktop & Up
+
+// End Desktop & Up
+}
