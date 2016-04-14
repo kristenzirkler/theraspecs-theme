@@ -1,0 +1,68 @@
+<div class="alert-box %%GLOBAL_HideFormError%%" style="display:%%GLOBAL_HideFormError%%">
+    <div>%%LNG_BadContactFormCaptcha%%</div>
+    <a href="" class="close">&times;</a>
+</div>
+
+<div class="row">
+    <div class="six columns">
+
+        <form action="%%GLOBAL_ShopPath%%/pages.php?action=sendContactForm" method="post" id="ContactForm" class="PL20">
+            <input type="hidden" name="page_id" id="page_id" value="%%GLOBAL_PageId%%" />
+            <div class="FormContainer HorizontalFormContainer">
+                <dl>
+                    <!--<dt style="display: %%GLOBAL_HideFullName%%">&nbsp;&nbsp; %%LNG_ContactName%%:</dt>-->
+                    <dt style="display: %%GLOBAL_HideFullName%%">&nbsp;&nbsp; Full name:</dt>
+                    <dd style="display: %%GLOBAL_HideFullName%%"><input type="text" name="contact_fullname" id="contact_fullname" class="Textbox Field200" value="%%GLOBAL_ContactName%%" /></dd>
+        
+                    <!--<dt><span class="Required">*</span>&nbsp; %%LNG_ContactEmail%%:</dt>-->
+                    <dt><span class="Required">*</span>&nbsp; Email address:</dt>
+                    <dd><input type="text" name="contact_email" id="contact_email" class="Textbox Field200" value="%%GLOBAL_ContactEmail%%" /></dd>
+        
+                    <!-- commented out - using "company name" to receive referral source below Phone #
+                    <dt style="display: %%GLOBAL_HideCompanyName%%">&nbsp;&nbsp; %%LNG_ContactCompanyName%%:</dt>
+                    <dd style="display: %%GLOBAL_HideCompanyName%%"><input type="text" name="contact_companyname" id="contact_companyname" class="Textbox Field200" value="%%GLOBAL_ContactCompanyName%%" /></dd> -->
+        
+                    <!--<dt style="display: %%GLOBAL_HidePhone%%">&nbsp;&nbsp; %%LNG_ContactPhone%%:</dt>-->
+                    <dt style="display: %%GLOBAL_HidePhone%%">&nbsp;&nbsp; Phone number:</dt>
+                    <dd style="display: %%GLOBAL_HidePhone%%"><input type="text" name="contact_phone" id="contact_phone" class="Textbox Field200" value="%%GLOBAL_ContactPhone%%" /></dd>
+
+                    <!--added by Hart to use the Company Name field as a referral source question -->
+                    <dt style="display: %%GLOBAL_HideCompanyName%%">&nbsp;&nbsp; Where did you learn about us?</dt>
+                    <dd style="display: %%GLOBAL_HideCompanyName%%"><input type="text" name="contact_companyname" id="contact_companyname" class="Textbox Field200" value="" /></dd> 
+                    
+                    <dt style="display: %%GLOBAL_HideOrderNo%%">&nbsp;&nbsp; %%LNG_ContactOrderNo%%:</dt>
+                    <dd style="display: %%GLOBAL_HideOrderNo%%"><input type="text" name="contact_orderno" id="contact_orderno" class="Textbox Field200" value="%%GLOBAL_ContactOrderNo%%" /></dd>
+        
+                    <dt style="display: %%GLOBAL_HideRMANo%%">&nbsp;&nbsp; %%LNG_ContactRMANo%%:</dt>
+                    <dd style="display: %%GLOBAL_HideRMANo%%"><input type="text" name="contact_rma" id="contact_rma" class="Textbox Field200" value="%%GLOBAL_ContactRMA%%" /></dd>
+
+                    <dt><span class="Required">*</span>&nbsp; Message:</dt>
+                    <!--<dt><span class="Required">*</span>&nbsp; %%LNG_ContactQuestion%%:</dt>-->
+                    <dd><textarea name="contact_question" id="contact_question" class="Field300" rows="5" cols="50">%%GLOBAL_ContactQuestion%%</textarea><div id="SearchResults"></div></dd>
+        
+                    <!--<dt style="display: %%GLOBAL_HideCaptcha%%"><span class="Required">*</span>&nbsp; %%LNG_CaptchaVerification%%:</dt>-->
+                    <dt style="display: %%GLOBAL_HideCaptcha%%"><span class="Required">*</span>&nbsp; Robots check:</dt>
+                    <dd style="display: %%GLOBAL_HideCaptcha%%">
+                        <!--<p>%%LNG_CaptchaIntro%%</p>-->
+                        <p>Please type the text from the image below into the form field. Doing this helps us prevent automated spam messages.</p>
+                        <div class="row">
+                            <div class="five mobile-two columns">
+                                <a class="th">%%GLOBAL_CaptchaImage%%</a>
+                            </div>
+                            <div class="seven mobile-two columns">
+                                <input type="text" name="captcha" id="captcha" class="Textbox">
+                            </div>
+                        </div>
+                    </dd>
+                    <dt>&nbsp;</dt>
+                    <dd style="margin-top:20px;"><input class="button" type="submit" value="%%LNG_SendForm%%" class="ContactButton"></dd>
+                </dl>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+%%Panel.ContactFormJavaScript%%
+
+%%GLOBAL_ARSPanel%%

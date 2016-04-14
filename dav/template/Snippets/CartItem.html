@@ -1,0 +1,48 @@
+<script type="text/javascript">
+    var productids = productids || [];
+    productids.push("%%GLOBAL_ItemId%%");
+</script>
+
+<li data-product="%%GLOBAL_ProductId%%">
+    
+    <div class="ProductImage" style="%%GLOBAL_HideThumbColumn%%">%%GLOBAL_ProductImage%%</div>
+    
+    <div class="ProductDetails">
+        <span class="ProductName"><a href="%%GLOBAL_ProductLink%%">%%GLOBAL_ProductName%%</a></span>
+        <div class="row collapse">
+            <div class="two mobile-one columns qty-label">
+                <span><small>Qty:</small></span>
+            </div>
+            <div class="two mobile-two columns qty-field">
+                %%GLOBAL_CartItemQty%%
+            </div>
+            <div class="two mobile-one columns remove-btn">
+                <a class="CartRemoveLink" href="cart.php?action=remove&amp;item=%%GLOBAL_CartItemId%%" style="%%GLOBAL_HideCartItemRemove%%" onclick="Cart.RemoveItem('%%GLOBAL_CartItemId%%'); return false;"><i class="icon-remove"></i></a> <!-- %%LNG_Remove%% -->
+            </div>
+            <div class="six columns mobile-four">
+                <span class="IndividualPrice">%%GLOBAL_ProductPrice%%</span>
+                <span class="ProductPrice right has-tip tip-top qty-%%GLOBAL_ProductQuantity%%" title="%%GLOBAL_ProductPrice%% x %%GLOBAL_ProductQuantity%%">%%GLOBAL_ProductTotal%%</span>
+            </div>
+        </div>
+        
+        <div class="ProductOptions">
+            %%GLOBAL_ProductOptions%%
+            
+            <div class="CartExpectedReleaseDate" style="%%GLOBAL_HideExpectedReleaseDate%%">(%%GLOBAL_ProductExpectedReleaseDate%%)</div>
+            %%GLOBAL_EventDate%%
+            <div style="%%GLOBAL_HideWrappingOptions%%" class="WrappingOptions">
+                %%LNG_GiftWrapping%%:
+                %%GLOBAL_GiftWrappingName%%
+                <a href="#" onclick="Cart.ManageGiftWrapping('%%GLOBAL_CartItemId%%');" style="%%GLOBAL_HideGiftWrappingAdd%%">%%LNG_Add%%</a>
+                <span style="%%GLOBAL_HideGiftWrappingEdit%%">
+                    (<a href="#" onclick="Cart.ManageGiftWrapping('%%GLOBAL_CartItemId%%');">%%LNG_Change%%</a> %%LNG_Or%% <a href="cart.php?action=remove_giftwrapping&amp;item_id=%%GLOBAL_CartItemId%%" onclick="return Cart.RemoveGiftWrapping();">%%LNG_Remove%%</a>)
+                </span>
+                <br>
+                <span style="%%GLOBAL_HideGiftMessagePreview%%">
+                    %%LNG_GiftMessage%%:
+                    %%GLOBAL_GiftMessagePreview%%
+                </span>
+            </div>
+        </div>
+    </div>
+</li>

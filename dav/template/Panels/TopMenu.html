@@ -1,0 +1,62 @@
+<div class="mobile-cart-link" style="display:%%GLOBAL_HidePurchasingOptions%%">
+    <a href="%%GLOBAL_ShopPathNormal%%/cart.php" rel="nofollow" style="display:%%GLOBAL_HideCartOptions%%">
+        <i class="icon-shopping-cart"></i> <span class="cart-count"></span>
+    </a>
+</div>
+
+<div class="account-links">
+    <ul class="inline-list">
+        <li style="display:%%GLOBAL_HideAccountOptions%%" class="account-link top-menu-link"><a href="%%GLOBAL_ShopPath%%/account.php" rel="nofollow"><i class="icon-user"></i> %%LNG_YourAccount%%</a></li>
+%%SNIPPET_TopMenuGiftCertificates%%
+        <li style="display:%%GLOBAL_HideAccountOptions%%" class="login-logout top-menu-link">%%GLOBAL_LoginOrLogoutText%%</li>
+        <li class="theraspecs-phone">
+            <span><i class="icon-phone"></i>%%GLOBAL_StorePhoneNumber%%</span>
+        </li>
+        %%Panel.SideCurrencySelector%%
+        <li style="display:%%GLOBAL_HidePurchasingOptions%%" class="cart-link top-menu-link">
+            <a href="%%GLOBAL_ShopPathNormal%%/cart.php" rel="nofollow" style="display:%%GLOBAL_HideCartOptions%%">
+                <i class="icon-shopping-cart"></i>View Cart <span class="cart-count"></span>
+                %%Panel.SideCartContents%%
+            </a>
+        </li>
+        <li class="store-credit top-menu-link hide-size-desktop">
+            <span>
+                &copy; %%GLOBAL_Year%% %%GLOBAL_StoreName%%
+                <br>
+                Store powered by Bigcommerce
+            </span>
+        </li>
+    </ul>
+</div>
+
+<script>
+    // expands top menu
+    (function(window, document, $, undefined){
+        $('.top-menu').on('mouseenter mouseleave',function(){
+            var link = $(this).children('a');
+            var sub = $(this).children('ul');
+            if( sub.is(':visible') ) {
+                link.removeClass('active');
+                sub.hide();
+            }
+            else {
+                link.addClass('active');
+                sub.show();
+            }
+            
+            return false;
+        });
+    
+        // adjust sign in/create an account link (no access to change this in BC panels means we resort to JS)
+        var loginlogout_link = $('.login-logout');
+        if( loginlogout_link.find('a').length > 1 ) { // logged out
+            //var signin_link = '<a href="%%GLOBAL_ShopPath%%/login.php"><i class="icon-signin"></i> Sign In</a>';
+            var createaccount_link = '<a href="%%GLOBAL_ShopPath%%/login.php?action=create_account" rel="nofollow"><i class="icon-plus-sign-alt"></i> Create An Account</a>';
+            
+            loginlogout_link.after( '<li class="create-account top-menu-link">' + createaccount_link + '</li>' );
+            loginlogout_link.remove();
+        }
+        else // logged in
+            loginlogout_link.find('a').prepend('<i class="icon-signout"></i>');
+    })(window, document, jQuery);
+</script>

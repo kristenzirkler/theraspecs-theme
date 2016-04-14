@@ -1,0 +1,63 @@
+%%Panel.HTMLHead%%
+<body class="checkout page">
+%%Panel.Header%%
+
+<section class="main">
+    %%Panel.MainGridTopWide%%
+        <h1>%%LNG_SecureCheckout%%</h1>
+    <h1>Test Edit</h1>
+        <div class="row">
+            <div class="six columns CreateAccount">
+                <form action="checkout.php?action=choose_billing_address" method="post">
+                    <div id="CheckoutGuestForm" style="%%GLOBAL_HideCheckoutGuest%%">
+                        <h4 class="subheader">%%LNG_NotAnExistingCustomer%%</h4>
+                        <p>%%LNG_CheckoutGuestIntro%%</p>
+                        <dl>
+                            <dd><label><input name="checkout_type" id="checkout_type_guest" value="guest" checked="checked" type="radio"> %%LNG_CheckoutAsNewCustomer%%</label></dd>
+                            <dd><label><input name="checkout_type" id="checkout_type_register" value="register" type="radio"> %%LNG_RegisterAnAccount%%</label></dd>
+                        </dl>
+                        <p><input type="submit" class="button" value="%%LNG_Continue%%"></p>
+                    </div>
+                    <div style="%%GLOBAL_HideCheckoutRegistrationRequired%%">
+                        <h4 class="subheader">%%LNG_NotAnExistingCustomer%%</h4>
+                        <p>%%LNG_CreateAccountIntroTitle%%</p>
+                        <ul class="square">
+                            <li>%%LNG_CreateAccountIntro1%%</li>
+                            <li>%%LNG_CreateAccountIntro2%%</li>
+                            <li>%%LNG_CreateAccountIntro3%%</li>
+                        </ul>
+                        <p><input class="button" type="submit" value="%%LNG_Continue%%"></p>
+                    </div>
+                </form>
+            </div>
+            <div class="six columns AccountLogin">
+                <h4 class="subheader">%%LNG_AlreadyHaveAnAccount%%</h4>
+                <p>%%LNG_AlreadyHaveAnAccountIntro%%</p>
+                <form action="checkout.php?action=choose_billing_address" id="LoginForm" method="post">
+                    <p style="display: %%GLOBAL_HideLoginMessage%%" class="%%GLOBAL_MessageClass%%">
+                        %%GLOBAL_LoginMessage%%
+                    </p>
+    
+                    <dl>
+                        <dt>%%LNG_EmailAddress%%:</dt>
+                        <dd><input type="text" class="Textbox Field150 InitialFocus" name="login_email" id="login_email" /></dd>
+    
+                        <dt>%%LNG_Password%%:</dt>
+                        <dd><input type="password" autocomplete="off" class="Textbox Field150" name="login_pass" id="login_pass"></dd>
+                    
+                        <dt>&nbsp;</dt>
+                        <dd>
+                            <p><input class="button" id="LoginButton" type="submit" value="%%LNG_Continue%%"></p>
+                            <p><a class="small secondary button" href="%%GLOBAL_ShopPath%%/login.php?action=reset_password">%%LNG_ForgotYourPassword%%</a></p>
+                        </dd>
+                    </dl>
+                    
+                </form>
+            </div>
+        </div>
+        
+    %%Panel.MainGridBottomWide%%
+</section>
+
+%%Panel.Footer%%
+%%Panel.HTMLFoot%%

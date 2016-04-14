@@ -1,0 +1,69 @@
+%%Panel.HTMLHead%%
+<body class="order page">
+%%Panel.Header%%
+
+<section class="main">
+    %%Panel.MainGridTop%%
+        <h1>%%LNG_ThanksForYourOrder%%%%GLOBAL_CustomerName%%</h1>
+        <div class="alert-box %%GLOBAL_HideError%%" style="display:%%GLOBAL_HideError%%">
+            <div>%%GLOBAL_ErrorMessage%%</div>
+            <a href="" class="close">&times;</a>
+        </div>
+
+        <div class="panel %%GLOBAL_HidePaidOrderConfirmation%%" style="display:%%GLOBAL_HidePaidOrderConfirmation%%">
+            <p><strong>%%LNG_YourOrderNumber%%</strong> <a class="order-number" href="%%GLOBAL_ShopPath%%/account.php?action=view_order&order_id=%%GLOBAL_OrderId%%"><strong>%%GLOBAL_OrderId%%</strong></a></p>
+
+            <p style="display:%%GLOBAL_HidePhysicalOrderConfirmation%%">
+                %%GLOBAL_PhysicalOrderConfirmation%%
+            </p>
+
+            <p style="display:%%GLOBAL_HideDigitalOrderConfirmation%%">
+                %%GLOBAL_DigitalOrderConfirmation%%
+            </p>
+            
+            <p style="display:%%GLOBAL_HideDigitalOrderDownloadLink%%">
+                <a href="%%GLOBAL_ViewFullOrderPath%%">%%LNG_DownloadTheItemsYouOrdered%%</a>
+            </p>
+        </div>
+
+        <div class="alert-box %%GLOBAL_HideAwaitingPayment%%" style="display:%%GLOBAL_HideAwaitingPayment%%">
+            <div>
+                <span style="display:%%GLOBAL_HideSuccess%%">
+                    %%LNG_JustSentAnEmailConfirmation%%
+                </span>
+                %%LNG_OrderAwaitingPayment%%
+            </div>
+            <a href="" class="close">&times;</a>
+        </div>
+        
+        %%GLOBAL_OrderConfirmationDetails%%
+        
+        %%SNIPPET_OfflinePaymentMessage%%
+
+        <!--Panel.ShareProductById-->
+        <!--Panel.SimilarMultiProductsByCustomerViews-->
+        
+        <div style="display: %%GLOBAL_HideTopSellers%%">
+            %%Panel.SideTopSellers%%
+        </div>
+
+        <p><a class="secondary button" href="%%GLOBAL_ShopPath%%">%%GLOBAL_ContinueShoppingOnStoreName%%</a></p>
+    %%Panel.MainGridBottom%%
+</section>
+
+<script type="text/javascript">
+var google_tag_params = {
+ecomm_pagetype: 'purchase',
+ecomm_totalvalue:  %%ORDER_AMOUNT%%
+};
+</script>
+    
+%%Panel.Footer%%
+
+<!-- order page scripts -->
+<script src="%%GLOBAL_CdnAppPath%%/javascript/jquery/plugins/jCarousel/jCarousel.js?%%GLOBAL_JSCacheToken%%"></script>
+
+<!-- Include the conversion tracking code for all analytics packages -->
+%%GLOBAL_ConversionCode%%
+
+%%Panel.HTMLFoot%%

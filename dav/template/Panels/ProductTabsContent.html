@@ -1,0 +1,42 @@
+<ul class="tabs-content">
+    <li class="active" id="DescriptionTab">
+        %%Panel.ProductDescription%%
+    </li>
+    <li id="ReviewsTab">
+        %%Panel.ProductReviews%%
+    </li>
+    <li id="RelatedProductsTab" style="display:%%GLOBAL_HideRelatedProductsPanel%%">
+        %%Panel.SideProductRelated%%
+    </li>
+    <li id="ProductVideosTab">
+        %%Panel.ProductVideos%%
+    </li>
+    <li id="WarrantyTab">
+        %%Panel.ProductWarranty%%
+    </li>
+    <li id="SimilarProductsByCustomerViewsTab">
+        %%Panel.SimilarProductsByCustomerViews%%
+    </li>
+    <li id="ByCategoryTab">
+        %%Panel.ProductByCategory%%
+    </li>
+    <li id="OtherDetailsTab" style="display: %%GLOBAL_HideCustomFields%%">
+        %%Panel.ProductOtherDetails2%%
+    </li>
+</ul>
+
+<script>
+    // HIDE EMPTY TABS
+    $('dl.tabs > dd > a').each(function(){
+        var tab = $('.tabs-content > li'+$(this).attr('href')+'Tab');
+        var firstdiv = tab.children('div:first');
+        if( firstdiv.attr('id') != 'disqus_thread' && firstdiv.is(':empty') ) 
+            $(this).parent().hide();
+    });
+    
+    // SHOW ALL TABS IF PRODUCT TABS SETTING IS TURNED OFF
+    if($('#ProductTabs').is(':hidden')) $('.tabs-content > li').css('display','block');
+    
+    // HIDE TAB TITLES
+    if($('dl.tabs').length > 0) $('.tabs-content > li > h3').hide();
+</script>

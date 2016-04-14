@@ -1,0 +1,174 @@
+<div class="row" style="display: %%GLOBAL_HideShoppingCartEmptyMessage%%">
+    <div class="twelve columns">
+        <div class="alert-box">
+            <div>%%LNG_NoItemsInCart%%</div>
+            <a href="" class="close">&times;</a>
+        </div>
+        
+        <p>%%LNG_EmptyCartInfo%%</p>
+    </div>
+</div>
+
+<div class="row cart-contents">
+    <div class="twelve columns">
+        <form style="display: %%GLOBAL_HideShoppingCartGrid%%" enctype="multipart/form-data" onsubmit="return Cart.ValidateQuantityForm(this);" action="cart.php" name="cartForm" id="cartForm" method="post">
+            <input type="hidden" name="action" value="update">            
+            
+            <div class="product-grid product-list">
+                <table class="twelve header">
+                    <thead>
+                        <tr>
+                            <th colspan="2">%%LNG_CartItems%%</th>
+                            <th class="medium nowrap">Quantity</th>
+                            <th class="medium nowrap">%%LNG_ItemPrice%%</th>
+                            <th class="medium nowrap">%%LNG_ItemTotal%%</th>
+                        </tr>
+                    </thead>
+                </table>
+                <ul>
+                    %%SNIPPET_CartItems%%
+                </ul>
+                <script>
+                    $('.has-tip.qty-1').removeClass('has-tip');
+                </script>
+                <table class="twelve footer">
+                    <tfoot>
+                        <tr class="SubTotal">
+                            <td class="right">%%LNG_Subtotal%%:</td>
+                            <td class="small right"><span class="ProductPrice">%%GLOBAL_CartItemTotal%%</span></td>
+                        </tr>
+                        <tr class="SubTotal" style="%%GLOBAL_HideGiftWrappingTotal%%">
+                            <td class="right">%%LNG_GiftWrapping%%:</td>
+                            <td class="small right"><span class="ProductPrice">%%GLOBAL_GiftWrappingTotal%%</span></td>
+                        </tr>
+                        %%SNIPPET_NormalCoupons%%
+                        <tr class="SubTotal" style="%%GLOBAL_HideDiscountAmount%%">
+                            <td class="right">%%LNG_Discount%%:</td>
+                            <td class="small right"><span class="ProductPrice">%%GLOBAL_DiscountAmount%%</span></td>
+                        </tr>
+                        <tr class="SubTotal" style="%%GLOBAL_HideShoppingCartShippingEstimator%%">
+                            <td colspan="2">
+                                <a href="#" class="EstimateShippingLink secondary button right" onclick="Cart.ToggleShippingEstimation(); return false;">%%LNG_CalculateShippingHandling%%</a>
+                                <div class="EstimateShipping panel radius right six mobile-four" style="display: none;">
+                                    
+                                    <div class="EstimatedShippingMethods" style="display: none;">
+                                        <div class="ShippingMethodList">
+                                        </div>
+                                        <div id="changeShippingLocationContainer" class="twelve columns mobile-two"><a id="changeShippingLocation" class="secondary small button right" href="#">Change Location</a></div>
+                                    </div>
+                                    
+                                    <div class="row updateShipping-Country">
+                                        <div class="four mobile-two columns">
+                                            <label class="right inline"><span class="Required">*</span>&nbsp;%%LNG_Country%%:</label>
+                                        </div>
+                                        <div class="eight mobile-two columns">
+                                            <select data-placeholder="Choose a Country" class="Field200" name="shippingZoneCountry" id="shippingZoneCountry" onchange="Cart.ToggleShippingEstimateCountry();">
+                                                %%GLOBAL_ShippingCountryList%%
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row updateShipping-State">
+                                        <div class="four mobile-two columns">
+                                            <label class="right inline"><span class="Required" id="shippingZoneStateRequired">*</span>&nbsp;%%LNG_StateProvince%%:</label>
+                                        </div>
+                                        <div class="eight mobile-two columns">
+                                            <select data-placeholder="Choose a State" style="display: %%GLOBAL_ShippingHideStateList%%" class="Field200" name="shippingZoneState" id="shippingZoneState">
+                                                %%GLOBAL_ShippingStateList%%
+                                            </select>
+                                            <input style="display: %%GLOBAL_ShippingHideStateBox%%" type="text" class="Textbox Field200" name="shippingZoneStateName" id="shippingZoneStateName" value="%%GLOBAL_AddressState%%">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row updateShipping-Zipcode">
+                                        <div class="four mobile-two columns">
+                                            <label class="right inline"><span class="Required">*</span>&nbsp;%%LNG_ZipPostcode%%:</label>
+                                        </div>
+                                        <div class="eight mobile-two columns">
+                                            <input type="text" class="Field100 Textbox" name="shippingZoneZip" id="shippingZoneZip" value="%%GLOBAL_ShippingZip%%">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row updateShipping-Buttons">
+                                        <div class="four columns mobile-two">
+                                            <a class="secondary small button right" href="#" onclick="return Cart.ToggleShippingEstimation();">%%LNG_Cancel%%</a>
+                                        </div>
+                                        <div class="eight columns mobile-two EstimateShippingButtons">
+                                            <input type="button" id="estimateUpdatedShipping" class="small button" onclick="Cart.EstimateShipping();" value="%%LNG_CalculateShipping%%">
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </td>
+                        </tr>
+                        <tr style="display:%%GLOBAL_HideShoppingCartShippingCost%%" class="SubTotal">
+                            <td class="right">%%LNG_Shipping%% (%%GLOBAL_ShippingProvider%%):</td>
+                            <td class="small right"><span class="ProductPrice">%%GLOBAL_ShippingCost%%</span></td>
+                        </tr>
+                        %%SNIPPET_FreeShippingCoupons%%
+                        <tr style="display: %%GLOBAL_HideShoppingCartHandlingCost%%" class="SubTotal">
+                            <td class="right">%%LNG_Handling%%:</td>
+                            <td class="small right"><span class="ProductPrice">%%GLOBAL_HandlingCost%%</span></td>
+                        </tr>
+                        %%GLOBAL_Taxes%%
+                        %%SNIPPET_GiftCertificates%%
+                        <tr class="SubTotal">
+                            <td class="right">%%LNG_GrandTotal%%:</td>
+                            <td class="small right"><span class="ProductPrice">%%GLOBAL_CartTotal%%</span></td>
+                        </tr>
+                        %%GLOBAL_InclusiveTaxes%%
+                    </tfoot>
+                </table>
+            </div>
+            
+            
+        </form>
+        
+        <p class="left cart-action-buttons" style="display: %%GLOBAL_HideCartQuantityTextBox%%">
+        
+            <a href="%%GLOBAL_ShopPath%%" class="secondary button"><i class="icon-arrow-left"></i> Continue Shopping</a>
+        
+            <a style="%%GLOBAL_HideCheckoutButton%%" class="secondary button" onclick="jQuery('#cartForm').trigger('submit');" title="%%LNG_Update%%"><i class="icon-refresh"></i> Update Cart</a>
+        </p>
+        
+        <div class="ProceedToCheckout right" style="%%GLOBAL_HideCheckoutButton%%">
+            <div class="CheckoutButton">
+                <a class="button" href="%%GLOBAL_CheckoutLink%%" onclick="" title="%%LNG_CheckoutButtonTitle%%"><i class="icon-shopping-cart"></i> Proceed To Checkout</a>
+            </div>
+            <div class="AlternativeCheckout" style="%%GLOBAL_HideMultipleAddressShipping%%">
+                <p style="%%GLOBAL_HideMultipleAddressShippingOr%%">-- Or Use --</p>
+                <p><a href="%%GLOBAL_ShopPath%%/checkout.php?action=multiple">Checkout with<br>multiple addresses</a></p>
+            </div>
+            %%GLOBAL_AdditionalCheckoutButtons%%
+        </div>
+    </div>
+</div>
+​
+<script type="text/javascript">// <![CDATA[
+        jQuery('#estimateUpdatedShipping').click(function(){
+                if (jQuery('.updateShipping-Country select').val() != 0) {
+                    if (jQuery('.updateShipping-State select').val() != 0) {
+                        if (jQuery('.updateShipping-Zipcode select').val() != "") {
+
+                            jQuery(".ShippingMethodList").fadeIn("medium");
+                            jQuery("#changeShippingLocation").show();
+                            jQuery(".updateShipping-Country").hide();
+                            jQuery(".updateShipping-State").hide();
+                            jQuery(".updateShipping-Zipcode").hide();
+                            jQuery(".updateShipping-Buttons").hide();
+
+
+                        }
+                    }
+                };
+        });
+
+        jQuery('#changeShippingLocation').click(function(){
+            jQuery(".ShippingMethodList").fadeOut('medium');
+            jQuery("#changeShippingLocation").hide();
+            jQuery(".updateShipping-Country").show();
+            jQuery(".updateShipping-State").show();
+            jQuery(".updateShipping-Zipcode").show();
+            jQuery(".updateShipping-Buttons").show();
+        });
+// ]]></script>

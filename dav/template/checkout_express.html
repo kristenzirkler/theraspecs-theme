@@ -1,0 +1,265 @@
+%%Panel.HTMLHead%%
+<body class="express checkout page">
+%%Panel.Header%%
+
+<section class="main">
+    %%Panel.MainGridTopWide%%
+
+        <h1>%%LNG_SecureCheckout%%</h1>
+        
+        %%Discount.FreeShippingEligibility%%
+        <div class="ExpressCheckoutBlock %%GLOBAL_CollapsedStepClassAccountDetails%%" id="CheckoutStepAccountDetails" style="%%GLOBAL_ExpressCheckoutHideAccountDetails%%">
+            <div class="panel">
+                <div class="row ExpressCheckoutTitle">
+                    <span class="step-number">%%GLOBAL_ExpressCheckoutStepAccountDetails%%</span>
+                    <h4 class="ten mobile-three columns">
+                        %%LNG_ExpressCheckoutStepAccountDetails%%
+                        <span class="ExpressCheckoutCompletedContent"></span>
+                    </h4>
+                    <div class="two mobile-one columns">
+                        <a class="ChangeLink right small button" href="#" onclick="return ExpressCheckout.ChangeStep('AccountDetails');">%%LNG_Modify%%</a>
+                    </div>
+                </div>
+            </div>
+            <div class="ExpressCheckoutContent row">
+                <div class="CreateAccount six columns">
+                    <form action="#" method="post" onsubmit="ExpressCheckout.GuestCheckout(); return false;">
+                        <div id="CheckoutGuestForm" style="%%GLOBAL_HideGuestCheckoutOptions%%">
+                            <h4 class="subheader">CHECKOUT</h4>
+                            <p>You may check out as a guest or create a TheraSpecs account to track your order status.</p>
+                            <div class="PL40 radio-list">
+                                <label><input name="checkout_type" id="checkout_type_guest" value="guest" type="radio" checked="checked" onclick="$('#BillingDetailsLabel').html('%%LNG_ExpressCheckoutStepBillingAddress%%');"> Check out as a guest</label>
+                                <label><input name="checkout_type" id="checkout_type_register" value="register" type="radio" onclick="$('#BillingDetailsLabel').html('%%LNG_ExpressCheckoutStepBillingAccountDetails%%');"> Check out and create a TheraSpecs account</label>
+                                <label><input name="checkout_type" id="checkout_type_existing" value="existing" type="radio"> Login to existing TheraSpecs account to check out</label>
+                            </div>
+                            
+                            <input type="submit" class="button" id="CreateAccountButton" value="%%LNG_Continue%%">
+                            <span class="LoadingIndicator" style="display: none"><img src="%%GLOBAL_ShopPath%%/template/images/Loading.gif" alt=""></span>
+                        </div>
+                        <div style="%%GLOBAL_HideRegisteredCheckoutOptions%%">
+                            <h4 class="subheader">%%LNG_NotAnExistingCustomer%%</h4>
+                            <p>%%LNG_CreateAccountIntroTitle%%</p>
+                            <div class="PL40">
+                                <ul class="square">
+                                    <li>%%LNG_CreateAccountIntro1%%</li>
+                                    <li>%%LNG_CreateAccountIntro2%%</li>
+                                    <li>%%LNG_CreateAccountIntro3%%</li>
+                                </ul>
+                            </div>
+                            <p class="PL40 Submit">
+                                <input type="submit" class="button" value="%%LNG_Continue%%">
+                                <span class="LoadingIndicator" style="display: none"><img src="%%GLOBAL_ShopPath%%/template/images/Loading.gif" alt=""></span>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="AccountLogin six columns" id="existingUserLogin" style="display: none;">
+                    <h4 class="subheader">&nbsp;</h4>
+                    <p>To continue, please enter your TheraSpecs account email address and password.</p>
+
+                    <form action="#" id="LoginForm" method="post" onsubmit="ExpressCheckout.Login(); return false;">
+                        <div class="FormContainer HorizontalFormContainer NarrowFormContainer">
+                            <div class="alert-box hidden" id="CheckoutLoginError">
+                                <div>%%GLOBAL_LoginMessage%%</div>
+                                <a href="" class="close">&times;</a>
+                            </div>
+
+                            <div class="row">
+                                <div class="twelve columns">
+                                    <label>%%LNG_EmailAddress%%</label>
+                                </div>
+                                <div class="twelve columns">
+                                    <input type="text" class="Textbox Field150 InitialFocus" name="login_email" id="login_email">
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="twelve columns">
+                                    <label>%%LNG_Password%%</label>
+                                </div>
+                                <div class="twelve columns">
+                                    <input type="password" autocomplete="off" class="Textbox Field150" name="login_pass" id="login_pass">
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="twelve columns">
+                                    <p>
+                                        <input class="button" id="LoginButton" type="submit" value="%%LNG_Continue%%">
+                                        <span class="LoadingIndicator" style="display: none"><img src="%%GLOBAL_ShopPath%%/template/images/Loading.gif" alt=""></span>
+                                        <a class="small secondary button" href="%%GLOBAL_ShopPath%%/login.php?action=reset_password">%%LNG_ForgotYourPassword%%</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="ExpressCheckoutBlock %%GLOBAL_CollapsedStepClassBillingAddress%%" id="CheckoutStepBillingAddress">
+            <div class="panel">
+                <div class="row ExpressCheckoutTitle">
+                    <span class="step-number">%%GLOBAL_ExpressCheckoutStepBillingAddress%%</span>
+                    <h4 class="ten mobile-three columns">
+                        <span id="BillingDetailsLabel">%%LNG_ExpressCheckoutStepBillingAddress%%</span>
+                        <span class="ExpressCheckoutCompletedContent"></span>
+                    </h4>
+                    <div class="two mobile-one columns">
+                        <a class="ChangeLink right small button" href="#" onclick="return ExpressCheckout.ChangeStep('BillingAddress');">%%LNG_Modify%%</a>
+                    </div>
+                </div>
+            </div>
+            <div class="ExpressCheckoutContent">
+                %%SNIPPET_BillingAddressStepContents%%
+            </div>
+        </div>
+
+        <div class="clear ExpressCheckoutBlock %%GLOBAL_CollapsedStepClassShippingAddress%%" id="CheckoutStepShippingAddress" style="%%GLOBAL_ExpressCheckoutHideShippingAddress%%">
+            <div class="panel">
+                <div class="row ExpressCheckoutTitle">
+                    <span class="step-number">%%GLOBAL_ExpressCheckoutStepShippingAddress%%</span>
+                    <h4 class="ten mobile-three columns">
+                        %%LNG_ExpressCheckoutStepShippingAddress%%
+                        <span class="ExpressCheckoutCompletedContent"></span>
+                    </h4>
+                    <div class="two mobile-one columns">
+                        <a class="ChangeLink right small button" href="#" onclick="return ExpressCheckout.ChangeStep('ShippingAddress');">%%LNG_Modify%%</a>
+                    </div>
+                </div>
+            </div>
+            <div class="ExpressCheckoutContent hidden">
+                %%SNIPPET_ShippingAddressStepContents%%
+            </div>
+        </div>
+
+        <div class="clear ExpressCheckoutBlock %%GLOBAL_CollapsedStepClassShippingProvider%%" id="CheckoutStepShippingProvider" style="%%GLOBAL_ExpressCheckoutHideShippingProviders%%">
+            <div class="panel">
+                <div class="row ExpressCheckoutTitle">
+                    <span class="step-number">%%GLOBAL_ExpressCheckoutStepShippingProvider%%</span>
+                    <h4 class="ten mobile-three columns">
+                        %%LNG_ExpressCheckoutStepShippingMethod%%
+                        <span class="ExpressCheckoutCompletedContent"></span>
+                    </h4>
+                    <div class="two mobile-one columns">
+                        <a class="ChangeLink right small button" href="#" onclick="return ExpressCheckout.ChangeStep('ShippingProvider');">%%LNG_Modify%%</a>
+                    </div>
+                </div>
+            </div>
+            <div class="ExpressCheckoutContent">
+            </div>
+        </div>
+
+        <div class="ExpressCheckoutBlock %%GLOBAL_CollapsedStepClassConfirmation%%" id="CheckoutStepConfirmation">
+            <div class="panel">
+                <div class="row ExpressCheckoutTitle">
+                    <span class="step-number">%%GLOBAL_ExpressCheckoutStepConfirmation%%</span>
+                    <h4 class="ten mobile-three columns">
+                        %%LNG_ExpressCheckoutStepOrderConfirmation%%
+                        <span class="ExpressCheckoutCompletedContent"></span>
+                    </h4>
+                    <div class="two mobile-one columns">
+                        <a class="ChangeLink right small button" href="#" onclick="return ExpressCheckout.ChangeStep('Confirmation');">%%LNG_Modify%%</a>
+                    </div>
+                </div>
+            </div>
+            <div class="ExpressCheckoutContent">
+            </div>
+        </div>
+
+        <div class="ExpressCheckoutBlock %%GLOBAL_CollapsedStepClassPaymentDetails%%" id="CheckoutStepPaymentDetails" style="%%GLOBAL_ExpressCheckoutHidePaymentDetails%%">
+            <div class="panel ExpressCheckoutTitle">
+                <span class="step-number">%%GLOBAL_ExpressCheckoutStepPaymentDetails%%</span>
+                <h4>%%LNG_ExpressCheckoutStepPaymentDetails%%</h4>
+            </div>
+            <div class="ExpressCheckoutContent">
+            </div>
+        </div>
+
+    %%Panel.MainGridBottomWide%%
+</section>
+
+%%Panel.Footer%%
+
+<!-- express checkout page scripts -->
+<script type="text/javascript" src="%%GLOBAL_ShopPath%%/content/express.checkout.js"></script>
+<script src="%%GLOBAL_CdnAppPath%%/javascript/formfield.js?%%GLOBAL_JSCacheToken%%"></script>
+<script>
+    lang.LoginEnterValidEmail = "%%LNG_LoginEnterValidEmail%%";
+    lang.LoginEnterPassword = "%%LNG_LoginEnterPassword%%";
+    lang.AccountEnterPassword = "%%LNG_AccountEnterPassword%%";
+    lang.AccountPasswordsDontMatch = "%%LNG_AccountPasswordsDontMatch%%";
+    lang.AccountEnterFirstName = "%%LNG_AccountEnterFirstName%%";
+    lang.AccountEnterLastName = "%%LNG_AccountEnterLastName%%";
+    lang.EnterShippingFirstName = '%%LNG_EnterShippingFirstName%%';
+    lang.EnterShippingLastName = '%%LNG_EnterShippingLastName%%';
+    lang.EnterShippingAddress = "%%LNG_EnterShippingAddress%%";
+    lang.EnterShippingCity = "%%LNG_EnterShippingCity%%";
+    lang.ChooseShippingCountry = "%%LNG_ChooseShippingCountry%%";
+    lang.ChooseShippingState = "%%LNG_ChooseShippingState%%";
+    lang.EnterShippingZip = "%%LNG_EnterShippingZip%%";
+    lang.ExpressCheckoutStepBillingAddress = "%%LNG_ExpressCheckoutStepBillingAddress%%";
+    lang.ExpressCheckoutStepBillingAccountDetails = "%%LNG_ExpressCheckoutStepBillingAccountDetails%%";
+    lang.ExpressCheckoutLoadError = "%%LNG_ExpressCheckoutLoadError%%";
+    lang.ExpressCheckoutCheckingOutAsGuest = "%%LNG_ExpressCheckoutCheckingOutAsGuest%%";
+    lang.ExpressCheckoutCreatingAnAccount = "%%LNG_ExpressCheckoutCreatingAnAccount%%";
+    lang.ExpressCheckoutChooseBilling = "%%LNG_ExpressCheckoutChooseBilling%%";
+    lang.ExpressCheckoutChooseShipping = "%%LNG_ExpressCheckoutChooseShipping%%";
+    lang.ExpressCheckoutChooseShipper = "%%LNG_ExpressCheckoutChooseShipper%%";
+    lang.ExpressCheckoutFor = "%%LNG_ExpressCheckoutFor%%";
+    lang.ExpressCheckoutLoading = "%%LNG_ExpressCheckoutLoading%%";
+    lang.ShippingMethodCombined = "%%LNG_ShippingMethodCombined%%";
+    lang.EnterShippingPhone = "%%LNG_EnterShippingPhone%%"
+    lang.EnterCouponCode = "%%LNG_EnterCouponCode%%";
+    lang.BillAndShipToAddress = "%%LNG_BillAndShipToAddress%%";
+    lang.BillToThisAddress = "%%LNG_BillToThisAddress%%";
+    lang.ShipToThisAddress = "%%LNG_ShipToThisAddress%%";
+    lang.CheckingOutAs = "%%LNG_CheckingOutAs%%";
+    
+    var CustomCheckoutFormNewAccount = %%GLOBAL_CustomCheckoutFormNewAccount%%;
+    var CustomCheckoutFormBillingAddress = %%GLOBAL_CustomCheckoutFormBillingAddress%%;
+    var CustomCheckoutFormShippingAddress = %%GLOBAL_CustomCheckoutFormShippingAddress%%;
+    
+    $(document).ready(function() {
+        ExpressCheckout.signedIn = %%GLOBAL_ExpressCheckoutSignedIn%%;
+        ExpressCheckout.digitalOrder = %%GLOBAL_ExpressCheckoutDigitalOrder%%;
+        ExpressCheckout.init();
+        %%GLOBAL_GoToStep%%
+    });
+    
+    // payment step script
+    $(document).ajaxComplete(function() {
+        var inaccessible_content = $('#CheckoutStepPaymentDetails .ExpressCheckoutContent');
+        inaccessible_content.find('select').addClass('small');
+        inaccessible_content.find('input[type=submit]').addClass('button');
+        inaccessible_content.find('small').addClass('LittleNotePassword');
+        inaccessible_content.find('br').remove();
+    });
+    
+    %%GLOBAL_FormFieldRequiredJS%%
+</script>
+%%GLOBAL_CompiledFormFieldJavascript%%
+
+%%Panel.HTMLFoot%%
+
+<script type="text/javascript">
+    $( document ).ready(function() {
+        $('#checkout_type_existing').click(function()
+        {   
+            $("#CreateAccountButton").hide();
+            $("#existingUserLogin").fadeIn("fast");
+        });
+
+        $('#checkout_type_register').click(function()
+        {   
+            $("#CreateAccountButton").fadeIn("fast");
+            $("#existingUserLogin").hide();
+        });
+        $('#checkout_type_guest').click(function()
+        {   
+            $("#CreateAccountButton").fadeIn("fast");
+            $("#existingUserLogin").hide();
+        });
+    });
+</script>

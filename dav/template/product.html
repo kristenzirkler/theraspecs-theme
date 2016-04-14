@@ -1,0 +1,51 @@
+%%Panel.HTMLHead%%
+
+<body class="product page">
+
+%%Panel.Header%%
+
+<!-- product page stylesheets -->
+<link rel="stylesheet" type="text/css" href="%%GLOBAL_CdnAppPath%%/javascript/jquery/themes/cupertino/ui.all.css?%%GLOBAL_JSCacheToken%%">
+
+<section class="main">
+    %%Panel.MainGridTopWide%%
+        %%Panel.ProductBreadcrumb%%
+        %%Banner.TopBanner%%
+        <div itemscope itemtype="http://schema.org/Product">
+            %%Panel.ProductDetails%%
+            %%Panel.ProductTabs%%
+            %%Panel.ProductTabsContent%%
+        </div>
+    
+    %%Panel.MainGridBottomWide%%
+    %%Banner.BottomBanner%%
+
+</section>
+
+<script>
+    // removes product thumbs ul if there are no li's so that foundation clearing doesn't throw an error 
+    if($(".product-thumbs li").length == 0)
+        $(".product-thumbs").remove();
+        
+    $('.FoldingRow h4').on('click',function(){
+        var main_div = $(this).parents('.FoldingRow');
+        var content_div = $(this).next();
+        if(content_div.is(':hidden')) {
+            content_div.slideDown(250,function(){
+                main_div.addClass('FoldingRowOpen');
+            });
+        }
+        else {
+            content_div.slideUp(250,function(){
+                main_div.removeClass('FoldingRowOpen');
+            });
+        }
+    });
+</script>
+
+%%Panel.Footer%%
+
+<!-- product page scripts -->
+%%Panel.ProductJavaScript%%
+
+%%Panel.HTMLFoot%%

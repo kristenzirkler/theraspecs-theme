@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="twelve columns">
+        <h2>%%GLOBAL_fastCartQuantityTxt%%</h2>
+    </div>
+</div>
+
+<div class="fast-cart-mobile">
+    <ul class="button-group even two-up">
+        <li><a href="%%GLOBAL_CheckoutLink%%" class="small button">Proceed to Cart</a></li>
+        <li><a href="#" onclick="$('.close-reveal-modal').trigger('click');return false;" class="small secondary button">Continue Shopping</a></li>
+    </ul>
+</div>
+
+<div class="row fast-cart-content">
+    <div class="eight columns">
+        <h3 class="prodName">%%GLOBAL_fastCartProdLink%%</h3>
+        <div class="fcProdImg">%%GLOBAL_fastCartProdImg%%</div>
+        <p class="Quantity">%%LNG_QuantityAdded%%: %%GLOBAL_fastCartQuantity%%</p>
+        <span class="ProductPrice">%%GLOBAL_fastCartProdTotal%%</span>
+        
+    </div>
+
+    <div class="four columns cartSummary">
+        <div class="CheckoutButton" style="%%GLOBAL_HideCheckoutButton%%">
+            <a class="button" href="%%GLOBAL_CheckoutLink%%" title="%%LNG_CheckoutButtonTitle%%">Proceed To Checkout</a>
+        </div>
+        %%GLOBAL_AdditionalCheckoutButtons%%
+    
+        <p>
+            <h4>%%LNG_OrderSubtotal%%:</h4>
+            <span class="ProductPrice">%%GLOBAL_fastCartSubtotal%%</span>
+        </p>
+
+        <p>%%LNG_YourCartContains%% <span id="fastCartNumItemsTxt">%%GLOBAL_fastCartNumItemsTxt%%</span></p>
+        <p>
+            <a href="#" onclick="$('.close-reveal-modal').trigger('click');">%%LNG_ContinueShopping%%</a><br>
+            <!-- %%LNG_Or%% <a href="%%GLOBAL_ShopPath%%/cart.php">%%LNG_ViewEditCart%%</a> -->
+            %%LNG_Or%% <a href="%%GLOBAL_ShopPath%%/cart.php">%%LNG_ViewEditCart%%</a>
+            
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="twelve columns fastCartBottom product-grid" style="%%GLOBAL_HideSuggestiveCartContent%%">
+        <h3>%%LNG_YouMayAlsoLike%%</h3>
+        <ul class="ProductList" id="fastCartSuggestive">
+            %%GLOBAL_SuggestedProductListing%%
+        </ul>
+    </div>
+</div>

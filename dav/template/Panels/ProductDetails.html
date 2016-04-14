@@ -1,0 +1,222 @@
+<script type="text/javascript">
+var google_tag_params = {
+ecomm_prodid: %%GLOBAL_ProductId%%, 
+ecomm_pagetype: 'product',
+ecomm_totalvalue: '%%GLOBAL_ProductPrice%%'.replace(/[^0-9. ]/g,'').split(" ")[0]
+};
+</script>
+
+<div class="row details-row">
+
+    <div class="six columns product-images">
+        <div class="row">
+            <div class="twelve columns">
+                %%SNIPPET_ProductThumbImage%%
+
+                <ul class="product-thumbs">
+                    %%SNIPPET_ProductTinyImages%%
+                </ul>
+
+                <script>
+                    var ProductThumbWidth = %%GLOBAL_ProductThumbWidth%%;
+                    var ProductThumbHeight =  %%GLOBAL_ProductThumbHeight%%;
+                    var ProductMaxZoomWidth = %%GLOBAL_ProductMaxZoomWidth%%;
+                    var ProductMaxZoomHeight =  %%GLOBAL_ProductMaxZoomHeight%%;
+                    var ProductTinyWidth = %%GLOBAL_ProductMaxTinyWidth%%;
+                    var ProductTinyHeight =  %%GLOBAL_ProductMaxTinyHeight%%;
+
+                    var ShowImageZoomer = %%GLOBAL_ShowImageZoomer%%;
+                    var productId = %%GLOBAL_ProductId%%;
+                </script>
+            </div>
+        </div>
+        <div class="row">
+            <div class="twelve columns social-media">
+                %%GLOBAL_PinterestButton%%
+                %%GLOBAL_FacebookLikeButtonAbove%%
+            </div>
+        </div>
+    </div>
+
+    <div class="six columns product-details" id="ProductDetails">
+
+        <h3 itemprop="name">%%GLOBAL_ProductName%%</h3>
+
+         <div class="std">
+            %%Panel.ProductOtherDetails%%
+        </div>
+
+        %%Discount.FreeShippingEligibility%%
+        <div class="alert-box">
+            %%GLOBAL_ProductDetailFlashMessages%%
+            <a href="" class="close">&times;</a>
+        </div>
+
+        <div class="alert-box OutOfStockMessage">
+            %%SNIPPET_SideAddItemSoldOut%%
+            <a href="" class="close">&times;</a>
+        </div>
+
+        <div itemprop="brand" itemscope itemtype="http://schema.org/Brand">
+            <div class="row DetailRow BrandRow" style="display: %%GLOBAL_HideBrandLink%%">
+              <!-- was commented out to the div tag below, Hart uncommented to try to fix webmaster tools schema errors -->
+                <div class="Label column">%%LNG_Brand%%:</div>
+                <div class="Value column">
+                    <a href="%%GLOBAL_BrandLink%%">
+                        <span itemprop="name">TheraSpecs</span>
+                    </a>
+                </div>
+            <!-- </div>
+        </div> <!-- Was commented out through this DIV tag  -->
+        
+     <!--   <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+            <div class="row DetailRow RatingRow NoLabelRow" style="display: %%GLOBAL_HideRating%%">
+                <div class="Label column">%%LNG_Rating%%:</div>
+                <div class="Value column">
+                    <a href="#" class="show-reviews" title="Read Reviews">
+                        <meta itemprop="ratingValue" content="%%GLOBAL_Rating%%">
+                        <i class="icon-rating-%%GLOBAL_Rating%%"></i>
+
+                        (<span itemprop="ratingCount">%%GLOBAL_ProductNumReviews%%</span>)
+                    </a>
+                </div>
+            </div>  -->
+        </div> 
+        
+        <p id="messurementText"><strong>Measurements:</strong><br></p>
+        <div id="messurementImage"></div>
+
+        
+        <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+
+            <div class="row DetailRow PriceRow NoLabelRow" style="%%GLOBAL_HidePrice%%">
+                <div class="Label PriceLabel column">%%GLOBAL_PriceLabel%%:</div>
+                <div class="Value column">
+                    <span itemprop="price" class="ProductPrice VariationProductPrice">
+                        %%GLOBAL_ProductPrice%%
+                    </span>
+                    %%GLOBAL_IncludingExcludingTax%% %%GLOBAL_YouSave%%
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Hart removed this because Google doesn't recognize it
+        <div itemprop="mpu" itemscope itemtype="http://schema.org/MPU"> -->
+            
+        <div class="row DetailRow ProductSKU" style="display: %%GLOBAL_SKU%%">
+            <!-- <div class="Label column">%%LNG_SKU%%:</div>
+            <div class="Value column">
+                <span itemprop="sku" class="VariationProductSKU">
+                    %%GLOBAL_SKU%%
+                </span>
+            </div> -->
+        </div>
+       
+        </div>
+
+        <div class="row DetailRow" style="%%GLOBAL_HideVendorDetails%%">
+            <div class="Label column">%%LNG_Vendor%%:</div>
+            <div class="Value column">
+                %%GLOBAL_VendorName%%
+            </div>
+        </div>
+
+        <div class="row DetailRow" style="display: %%GLOBAL_HideCondition%%">
+            <div class="Label column">%%LNG_Condition%%:</div>
+            <div class="Value column">
+                %%GLOBAL_ProductCondition%%
+            </div>
+        </div>
+
+      <!--  <div itemprop="weight" itemscope itemtype="http://schema.org/QuantitativeValue">
+            <div class="row DetailRow" style="display: %%GLOBAL_HideWeight%%">
+                <div class="Label column">%%LNG_Weight%%:</div>
+                <div class="Value column">
+                    <span itemprop="value" class="VariationProductWeight">
+                        %%GLOBAL_ProductWeight%%
+                    </span>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="row DetailRow" style="display: %%GLOBAL_HideAvailability%%">
+            <div class="Label column">%%LNG_Availability%%:</div>
+            <div class="Value column">
+                %%GLOBAL_Availability%%
+            </div>
+        </div>
+
+        <div class="row DetailRow" style="display: %%GLOBAL_HideShipping%%">
+            <div class="Label column">%%LNG_Shipping%%:</div>
+            <div class="Value column">
+                %%GLOBAL_ShippingPrice%%
+            </div>
+        </div>
+
+        <div class="row DetailRow" style="%%GLOBAL_HideMinQty%%">
+            <div class="Label column">%%LNG_ProductMinQty%%:</div>
+            <div class="Value column">
+                %%GLOBAL_MinQty%% %%LNG_units%%
+            </div>
+        </div>
+
+        <div class="row DetailRow" style="%%GLOBAL_HideMaxQty%%">
+            <div class="Label column">%%LNG_ProductMaxQty%%:</div>
+            <div class="Value column">
+                %%GLOBAL_MaxQty%% %%LNG_units%%
+            </div>
+        </div>
+
+        <div class="row DetailRow InventoryLevel" style="%%GLOBAL_HideCurrentStock%%">
+            <div class="Label column">%%GLOBAL_CurrentStockLabel%%:</div>
+            <div class="Value column">
+                <span class="VariationProductInventory">
+                    %%GLOBAL_InventoryList%%
+                </span>
+            </div>
+        </div>
+        
+        <div class="row DetailRow" style="%%GLOBAL_HideGiftWrapMessage%%">
+            <div class="Label column">%%LNG_GiftWrapping%%:</div>
+            <div class="Value column">
+                %%GLOBAL_GiftWrappingAvailable%%
+            </div>
+        </div>
+       
+        
+        <div class="row AddToCartRow">
+            %%SNIPPET_ProductAddToCart%%
+            %%SNIPPET_ProductExpectedReleaseDate%%
+            
+            <script type="text/javascript" data-pp-pubid="03e7187552" data-pp-placementtype="300x50"> (function (d, t) {
+"use strict";
+var s = d.getElementsByTagName(t)[0], n = d.createElement(t);
+n.src = "//paypal.adtag.where.com/merchant.js";
+s.parentNode.insertBefore(n, s);
+}(document, "script"));
+</script>
+            
+            <div style="display:%%GLOBAL_HideWishlist%%">
+                %%Panel.SideProductAddToWishList%%
+            </div>
+        </div>
+    </div><!-- #ProductDetails -->
+
+</div><!-- .row -->
+
+<script>
+$(function(){
+  if ( $( "#glassesMeasurements" ).length ) {
+      var $glassesMeasurements = $('#glassesMeasurements').clone();
+      $('#messurementImage').html($glassesMeasurements);
+  } else {
+    $('#messurementImage').hide();
+    $('#messurementText').hide();
+  }
+});
+
+$(function(){
+  $(".reveal-modal").remove().clone().appendTo(".wrap");
+});
+</script>
